@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="title">
+    <h1>Todo List</h1>
+  </div>
+
+  <ng-container *ngIf="todos$ | async as todos;">
+    <ul *ngIf="todos.length;else empty">
+      <li *ngFor="let todo of todos$ | async; let i = index;">
+       {{ i +1 }}.  {{ todo.description }} - {{ todo.completed ? 'Done' : 'Pending' }}
+          <button [disabled]="todo.completed" (click)="complete(todo)">
+          complete
+        </button>
+
+    </ul>
+    <ng-template #empty>
+      <div>No Data</div>
+    </ng-template>
+
+  </ng-container>
+
+
+
+</div>
